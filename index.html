@@ -7,98 +7,54 @@
 
   <style>
     body {
+      margin: 0;
       background: #000;
       color: #fff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      height: 100vh;
       text-align: center;
-      padding: 1.5rem;
     }
 
-    .container {
-      max-width: 420px;
-    }
-
-    h1 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-    }
-
-    p {
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      color: #d1d5db;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.8rem 1.4rem;
-      border-radius: 999px;
+    button {
+      padding: 1rem 2rem;
       border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      margin-bottom: 0.75rem;
-      width: 100%;
-      max-width: 320px;
-    }
-
-    .btn-primary {
+      border-radius: 999px;
       background: #1db954;
-      color: #020617;
+      color: #000;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 2rem;
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: #e5e7eb;
-      border: 1px solid #4b5563;
-      font-size: 0.85rem;
-    }
-
-    .hint {
+    #version {
+      position: fixed;
+      bottom: 1rem;
       font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.75rem;
+      color: #6b7280;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Apri la traccia in Spotify</h1>
-    <p>Tocca il pulsante qui sotto per aprire la traccia nell’app Spotify. Se non funziona, usa la versione web.</p>
 
-    <button class="btn btn-primary" id="openAppButton">
-      Apri in Spotify (app)
-    </button>
+  <button id="openAppButton">
+    Open in Spotify
+  </button>
 
-    <a
-      class="btn btn-secondary"
-      href="https://open.spotify.com/track/3njo0yIbZ4cEztin4HNvic"
-      id="openWebLink"
-    >
-      Apri in Spotify (sito web)
-    </a>
-
-    <div class="hint">
-      Se vedi un messaggio tipo “Consentire a questo sito di aprire Spotify?”, conferma per aprire l’app.
-    </div>
-  </div>
+  <div id="version">v1</div> <!-- Cambia solo questo numero -->
 
   <script>
     const spotifyApp = "spotify:track:3njo0yIbZ4cEztin4HNvic";
 
     document.getElementById("openAppButton").addEventListener("click", function () {
-      // Tentativo di apertura dell’app su azione esplicita dell’utente
       window.location = spotifyApp;
     });
   </script>
+
 </body>
 </html>
-
