@@ -46,13 +46,29 @@
     Open in Spotify
   </button>
 
-  <div id="version">v1</div> <!-- Cambia solo questo numero -->
+  <div id="version">v2</div> <!-- incrementa qui -->
 
   <script>
     const spotifyApp = "spotify:track:3njo0yIbZ4cEztin4HNvic";
+    const spotifyWeb = "https://open.spotify.com/track/3njo0yIbZ4cEztin4HNvic";
+
+    let hidden = false;
+
+    // Se la pagina viene nascosta → l’app si è aperta → NON fare fallback
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") hidden = true;
+    });
 
     document.getElementById("openAppButton").addEventListener("click", function () {
+      hidden = false;
+
+      // Tentativo apertura app
       window.location = spotifyApp;
+
+      // Fallback solo se l'app NON si apre
+      setTimeout(() => {
+        if (!hidden) window.location = spotifyWeb;
+      }, 1500);
     });
   </script>
 
