@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Opening Spotify…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    // Deep link
+    const spotifyApp = "spotify:track:3njo0yIbZ4cEztin4HNvic";
+
+    // Fallback
+    const spotifyWeb = "https://open.spotify.com/track/3njo0yIbZ4cEztin4HNvic";
+
+    // 1) Prova ad aprire l’app
+    window.location = spotifyApp;
+
+    // 2) Se Instagram / iOS blocca, dopo 1.2s usa Spotify Web
+    setTimeout(function () {
+      window.location = spotifyWeb;
+    }, 1200);
+  </script>
+
+  <style>
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      font-family: system-ui, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  Redirecting to Spotify…
+</body>
+</html>
