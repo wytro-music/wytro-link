@@ -29,18 +29,12 @@
       padding: 1.5rem 1.2rem;
       position: relative;
       overflow-x: hidden;
+    
+      /* QUI: usa direttamente l'immagine di sfondo */
+      background: url("background.jpg") center center / cover no-repeat fixed;
     }
 
-    /* BACKGROUND FULLSCREEN */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url("background.jpg") center center / cover no-repeat;
-      filter: brightness(0.35) blur(3px);
-      z-index: -2;
-    }
-
+    /* Lascia solo l’overlay scuro sopra */
     body::after {
       content: "";
       position: fixed;
@@ -215,3 +209,4 @@
   </script>
 </body>
 </html>
+
