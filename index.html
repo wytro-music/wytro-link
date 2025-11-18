@@ -1,77 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Open in Spotify</title>
+  <title>Wytro – Welcome to the System Cup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
+    :root {
+      --accent: #1db954;
+      --accent-soft: #1ed760;
+      --text-main: #ffffff;
+      --text-muted: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: system-ui, -apple-system, sans-serif;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 1.5rem 1.2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* BACKGROUND FULLSCREEN */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("background.jpg") center center / cover no-repeat;
+      filter: brightness(0.35) blur(3px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: -1;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.4rem 1.3rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
       text-align: center;
     }
 
-    button {
-      padding: 1rem 2rem;
-      border: none;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.28rem 0.7rem;
       border-radius: 999px;
-      background: #1db954;
-      color: #000;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-bottom: 2rem;
+      border: 1px solid rgba(250,250,250,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
-    #version {
-      position: fixed;
-      bottom: 1rem;
-      font-size: 0.8rem;
-      color: #6b7280;
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(30,215,96,0.7);
+    }
+
+    .cover-card {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 14px 32px rgba(0,0,0,0.9),
+        0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .cover-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .subtitle span.title {
+      color: var(--accent-soft);
+      font-weight: 600;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+      margin-top: 0.4rem;
+    }
+
+    .btn {
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      color: #000;
+      box-shadow: 0 10px 24px rgba(30,215,96,0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+    }
+
+    .hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 2rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span>New single out November 8, 2025</span>
+    </div>
 
-  <button id="openAppButton">
-    Open in Spotify
-  </button>
+    <div class="cover-card">
+      <img src="system-cup-cover.jpg" alt="Welcome to the System Cup cover artwork">
+    </div>
 
-  <div id="version">v2b</div> <!-- incrementa qui -->
+    <h1>WYTRO</h1>
+
+    <p class="subtitle">
+      Wytro is a new EDM/Dance project blending energy, friendship, and sport-inspired vibes.
+      First single <span class="title">“Welcome to the System Cup”</span> out November 8, 2025.
+    </p>
+
+    <div class="buttons">
+      <button class="btn btn-primary" id="spotifyAppBtn">
+        Open in Spotify (app)
+      </button>
+
+      <a
+        class="btn btn-secondary"
+        href="https://open.spotify.com/track/3njo0yIbZ4cEztin4HNvic"
+      >
+        Open in Spotify (web)
+      </a>
+    </div>
+
+    <div class="hint">
+      If the browser asks for permission to open Spotify, confirm to launch the app.
+    </div>
+  </div>
 
   <script>
-    const spotifyApp = "spotify:track:3njo0yIbZ4cEztin4HNvic";
-    const spotifyWeb = "https://open.spotify.com/track/3njo0yIbZ4cEztin4HNvic";
-
-    let hidden = false;
-
-    // Se la pagina viene nascosta → l’app si è aperta → NON fare fallback
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") hidden = true;
-    });
-
-    document.getElementById("openAppButton").addEventListener("click", function () {
-      hidden = false;
-
-      // Tentativo apertura app
-      window.location = spotifyApp;
-
-      // Fallback solo se l'app NON si apre
-      setTimeout(() => {
-        if (!hidden) window.location = spotifyWeb;
-      }, 5000);
+    const spotifyAppUri = "spotify:track:3njo0yIbZ4cEztin4HNvic";
+    document.getElementById("spotifyAppBtn").addEventListener("click", () => {
+      window.location = spotifyAppUri;
     });
   </script>
-
 </body>
 </html>
-
